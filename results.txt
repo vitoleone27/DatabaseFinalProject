@@ -1,0 +1,116 @@
+a,  Find all the movies directed by Quentin Tarantino where the rating is PG-13 or R.
+SELECT title FROM netflix WHERE director = "Quentin Tarantino" AND (rating = "PG-13" OR rating = "R");
+1) The Hateful Eight: Extended Version
+2) Django Unchained
+3) The Hateful Eight
+4) Inglourious Basterds
+5) Jackie Brown
+6) Kill Bill: Vol. 1
+7) Kill Bill: Vol. 2
+8) Pulp Fiction
+
+b,  Find 10 movies released between 2005 and 2010 that are longer than 120 minutes.
+SELECT title FROM netflix WHERE type = "Movie" AND release_year > 2005 AND release_year < 2010 AND duration > 120 LIMIT 10;
+1) Jaane Tu... Ya Jaane Na
+2) Taare Zameen Par
+3) 2012
+4) 3 Idiots
+5) Banyuki
+6) Freedom Writers
+7) Into the Wild
+8) Angels & Demons
+9) The Da Vinci Code
+10) Well Done Abba
+
+c,  Find the top 10 shows and release years that lasted longer than 4 seasons with a rating of TV-MA.
+SELECT title, release_year FROM netflix WHERE type = "TV Show" AND duration > 4 AND rating = "TV-MA" LIMIT 10;
+1) House of Cards || 2018
+2) La casa de papel || 2021
+3) The Magicians || 2020
+4) Inside the World’s Toughest Prisons || 2021
+5) Stargate SG-1 || 2006
+6) American Horror Story || 2019
+7) The 100 || 2020
+8) Wentworth || 2020
+9) Call the Midwife || 2020
+10) Rita || 2020
+
+d,  Find the top 10 shows with the word “Love” in the title released between 1990 and 2000.
+SELECT title FROM netflix WHERE type = "TV Show" AND title LIKE '%love%' AND release_year >= 1990 LIMIT 10;
+1) Love Naggers
+2) My Love: Six Stories of True Love
+3) Love Alarm
+4) Love Daily
+5) A Love So Beautiful
+6) Lovestruck in the City
+7) Love & Anarchy
+8) Was It Love?
+9) All For Love
+10) Revolutionary Love
+
+e,  Find directors who made movies longer than 180 minutes before 1970 and the movies' titles.
+SELECT director, title FROM netflix WHERE duration > 180 AND release_year < 1970 AND NOT director LIKE "%,%";
+1) Youssef Chahine || Saladin
+2) David Lean || Doctor Zhivago
+3) Radhu Karmakar || Jis Desh Men Ganga Behti Hai
+4) Raj Kapoor || Sangam
+
+f,  Find 10 movies or TV shows that have been rated G and are longer than 180 minutes or TV-G and longer than 4 seasons.
+SELECT title, type FROM netflix WHERE (rating = "G" AND duration > 210) OR (rating = "TV-G" AND duration > 4) LIMIT 10;
+1) Bunk'd || TV Show
+2) Reframe THEATER EXPERIENCE with you || Movie
+3) Nate Bargatze: The Greatest Average American || Movie
+4) Just In Time || Movie
+5) Connected || Movie
+6) Brian Regan: On the Rocks || Movie
+7) Wave of Cinema: Surat dari Timur || Movie
+8) Double Dad || Movie
+9) Isa Pa with Feelings || Movie
+10) Cemara's Family || Movie
+
+g,  Find 15 unique directors who have either a show rated TV-MA or a movie rated R since 2021.
+SELECT DISTINCT(director) FROM netflix WHERE release_year >= 2021 AND (rating = "R" OR rating = "TV-MA") AND NOT director = "" AND NOT director LIKE "%,%" LIMIT 15;
+1) Joe Penna
+2) Gerardo Gatica
+3) Ryuichi Hiroki
+4) Cheng Wei-hao
+5) Fredrick Munk
+6) Park Hoon-jung
+7) Ricky Staub
+8) Naseef Yusuf Izuddin
+9) Sylvie Verheyde
+10) Kagiso Lediga
+11) Anna Elizabeth James
+12) Chris Smith
+13) Ladislaus Kiraly
+14) Kongkiat Komesiri
+15) Can Ulkay
+
+h,  Find the average year of all the titles released between 2000 and this year.
+SELECT AVG(release_year) FROM netflix WHERE release_year >= 2000;
+2015.9634
+
+i,  Find the longest movie with its duration.
+SELECT title, duration FROM netflix WHERE duration = (SELECT MAX(duration) FROM netflix WHERE duration > 99);
+Black Mirror: Bandersnatch || 312
+
+j,  Find the top 10 TV shows that don’t have a listed director and lasted longer than 3 seasons.
+SELECT title FROM netflix WHERE type = "TV Show" AND director = "" AND duration > 3 LIMIT 10;
+1) Gilmore Girls
+2) House of Cards
+3) Bunk'd
+4) Nicky, Ricky, Dicky & Dawn
+5) La casa de papel
+6) Big Time Rush
+7) Mighty Morphin Power Rangers
+8) Pokémon Journeys: The Series
+9) Word Party
+10) MeatEater
+
+k,  Find the 5 most listed directors and how many works they have.
+SELECT director, COUNT(director) FROM netflix WHERE NOT director = "" GROUP BY director ORDER BY COUNT(director) DESC LIMIT 5;
+1) Rajiv Chilaka || 19
+2) Raúl Campos, Jan Suter || 18
+3) Marcus Raboy || 16
+4) Suhas Kadav || 16
+5) Jay Karas || 14

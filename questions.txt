@@ -1,0 +1,11 @@
+a,  Find all the movies directed by Quentin Tarantino where the rating is PG-13 or R.
+b,  Find 10 movies released between 2005 and 2010 that are longer than 120 minutes.
+c,  Find the top 10 shows and release years that lasted longer than 4 seasons with a rating of TV-MA.
+d,  Find the top 10 shows with the word “Love” in the title released between 1990 and 2000.
+e,  Find directors who made movies longer than 180 minutes before 1970 and the movies' titles.
+f,  Find 10 movies or TV shows that have been rated G and are longer than 180 minutes or TV-G and longer than 4 seasons.
+g,  Find 15 unique directors who have either a show rated TV-MA or a movie rated R since 2021.
+h,  Find the average year of all the titles released between 2000 and this year.
+i,  Find the longest movie with its duration.
+j,  Find the top 10 TV shows that don’t have a listed director and lasted longer than 3 seasons.
+k,  Find the 5 most listed directors and how many works they have.

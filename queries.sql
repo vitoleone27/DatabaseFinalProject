@@ -1,0 +1,11 @@
+SELECT title FROM netflix WHERE director = "Quentin Tarantino" AND (rating = "PG-13" OR rating = "R");
+SELECT title FROM netflix WHERE type = "Movie" AND release_year > 2005 AND release_year < 2010 AND duration > 120 LIMIT 10;
+SELECT title, release_year FROM netflix WHERE type = "TV Show" AND duration > 4 AND rating = "TV-MA" LIMIT 10;
+SELECT title FROM netflix WHERE type = "TV Show" AND title LIKE '%love%' AND release_year >= 1990 LIMIT 10;
+SELECT director, title FROM netflix WHERE duration > 180 AND release_year < 1970 AND NOT director LIKE "%,%";
+SELECT title, type FROM netflix WHERE (rating = "G" AND duration > 210) OR (rating = "TV-G" AND duration > 4) LIMIT 10;
+SELECT DISTINCT(director) FROM netflix WHERE release_year >= 2021 AND (rating = "R" OR rating = "TV-MA") AND NOT director = "" AND NOT director LIKE "%,%" LIMIT 15;
+SELECT AVG(release_year) FROM netflix WHERE release_year >= 2000;
+SELECT title, duration FROM netflix WHERE duration = (SELECT MAX(duration) FROM netflix WHERE duration > 99);
+SELECT title FROM netflix WHERE type = "TV Show" AND director = "" AND duration > 3 LIMIT 10;
+SELECT director, COUNT(director) FROM netflix WHERE NOT director = "" GROUP BY director ORDER BY COUNT(director) DESC LIMIT 5;
